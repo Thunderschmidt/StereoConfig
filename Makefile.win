@@ -1,0 +1,39 @@
+# Project: StereoConfig
+# Makefile created by Dev-C++ 4.9.9.2
+
+CPP  = g++.exe -D__DEBUG__
+CC   = gcc.exe -D__DEBUG__
+WINDRES = windres.exe
+RES  = 
+OBJ  = obj/main.o obj/input3DO.o obj/StereoGL.o obj/ctload.o $(RES)
+LINKOBJ  = obj/main.o obj/input3DO.o obj/StereoGL.o obj/ctload.o $(RES)
+LIBS =  -L"lib" ../../lib/libaldmd.a ../../lib/libagl.a ../../lib/liballeg.a ../../lib/libuser32.a ../../lib/libgdi32.a ../../lib/libopengl32.a ../../lib/libglu32.a ../../lib/libglaux.a ../../lib/libstdc++.a -mwindows  -g3 
+INCS =  -I"include" 
+CXXINCS =  -I"lib/gcc/mingw32/3.4.2/include"  -I"include/c++/3.4.2/backward"  -I"include/c++/3.4.2/mingw32"  -I"include/c++/3.4.2"  -I"include" 
+BIN  = StereoConfig.exe
+CXXFLAGS = $(CXXINCS)   -g3
+CFLAGS = $(INCS)   -g3
+RM = rm -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before StereoConfig.exe all-after
+
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o "StereoConfig.exe" $(LIBS)
+
+obj/main.o: main.c
+	$(CPP) -c main.c -o obj/main.o $(CXXFLAGS)
+
+obj/input3DO.o: input3DO.c
+	$(CPP) -c input3DO.c -o obj/input3DO.o $(CXXFLAGS)
+
+obj/StereoGL.o: StereoGL.c
+	$(CPP) -c StereoGL.c -o obj/StereoGL.o $(CXXFLAGS)
+
+obj/ctload.o: ctload.c
+	$(CPP) -c ctload.c -o obj/ctload.o $(CXXFLAGS)
